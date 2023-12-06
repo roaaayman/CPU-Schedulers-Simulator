@@ -45,8 +45,10 @@ public class SJF implements Ischeduler {
             System.out.println("Finish Time for Process " + process.getName() + ": " + finishTime);
             double turnaroundtime = finishTime - process.getArrivalTime();
             double waitingtime = turnaroundtime - process.getBurstTime();
-            System.out.println("WAITING TIME " + process.getName() +  waitingtime);
-            System.out.println("turn around time " + process.getName() +  turnaroundtime);
+            System.out.println("Waiting Time for Process " + process.getName() + ": " + waitingtime);
+            System.out.println("Turnaround Time for Process " + process.getName() + ": " + turnaroundtime);
+            System.out.println("----------------------------------------------");
+
 
 
             totalwaitingtime += waitingtime;

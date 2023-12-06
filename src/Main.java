@@ -24,11 +24,31 @@ public class Main {
             processes.add(new Process(name, arrivalTime, burstTime));
         }
 
-        SJF sjfScheduler = new SJF();
-        sjfScheduler.setProcesses(processes);
+        System.out.println("Select Scheduler:");
+        System.out.println("1. SJF (Shortest Job First)");
+        System.out.println("2. SRTF (Shortest Remaining Time First)");
+        int choice = scanner.nextInt();
 
-        System.out.println("Executing SJF Scheduling Algorithm:");
-        sjfScheduler.schedule();
+        switch (choice) {
+            case 1:
+                // Execute SJF Scheduler
+                SJF sjfScheduler = new SJF();
+                sjfScheduler.setProcesses(new ArrayList<>(processes));
+
+                System.out.println("Executing SJF Scheduling Algorithm:");
+                sjfScheduler.schedule();
+                break;
+            case 2:
+                // Execute SRTF Scheduler
+                SRTF srtfScheduler = new SRTF();
+                srtfScheduler.setProcesses(new ArrayList<>(processes));
+
+                System.out.println("\nExecuting SRTF Scheduling Algorithm:");
+                srtfScheduler.schedule();
+                break;
+            default:
+                System.out.println("Invalid choice. Exiting...");
+        }
 
         scanner.close();
     }
