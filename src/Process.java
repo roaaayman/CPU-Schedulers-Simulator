@@ -54,7 +54,7 @@ public class Process {
         return burstTime;
     }
 
-    public int getPriorityNum() {
+    public int getPriority() {
         return priorityNum;
     }
 }
