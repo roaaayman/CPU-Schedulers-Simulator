@@ -21,14 +21,36 @@ public class Main {
             System.out.print("Burst Time: ");
             double burstTime = scanner.nextDouble();
 
-            processes.add(new Process(name, arrivalTime, burstTime));
+            System.out.print("Priority: ");
+            int priority = scanner.nextInt();
+
+            processes.add(new Process(name, arrivalTime, burstTime, priority));
         }
 
-        SJF sjfScheduler = new SJF();
-        sjfScheduler.setProcesses(processes);
+        System.out.println("Choose a scheduling algorithm:");
+        System.out.println("1. Shortest Job First (SJF)");
+        System.out.println("2. Priority Scheduling");
 
-        System.out.println("Executing SJF Scheduling Algorithm:");
-        sjfScheduler.schedule();
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                SJF sjfScheduler = new SJF();
+                sjfScheduler.setProcesses(processes);
+
+                System.out.println("Executing SJF Scheduling Algorithm:");
+                sjfScheduler.schedule();
+                break;
+            case 2:
+                priorityScheduling priorityScheduler = new priorityScheduling();
+                priorityScheduler.setProcesses(processes);
+
+                System.out.println("Executing Priority Scheduling Algorithm:");
+                priorityScheduler.schedule();
+                break;
+            default:
+                System.out.println("Invalid choice!");
+        }
 
         scanner.close();
     }
